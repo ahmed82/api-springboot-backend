@@ -12,6 +12,8 @@ import com.rbs.backendspringboot.services.EmployeeService;
 @RestController
 public class EmployeeController {
 	
+	
+	
 	@Autowired
 	private EmployeeService employeeservice;
 	
@@ -19,5 +21,11 @@ public class EmployeeController {
 	public List<Employee> getAllEmployee(){
 		return employeeservice.getAllEmployees();
 	}
-
+	
+	@GetMapping("/hello")
+	public String hello(){
+		return "Hello web team";
+	}
+	
+	
 }

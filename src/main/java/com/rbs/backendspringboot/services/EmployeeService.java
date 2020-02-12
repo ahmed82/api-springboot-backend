@@ -11,6 +11,11 @@ import com.rbs.backendspringboot.model.Employee;
 @Service
 public class EmployeeService {
 	
+	  
+	  
+	  
+	  Employee emp2 = new Employee("Chuck","Bruson");
+	  
 	
 	private List<Employee> employees = new ArrayList <> ( 
 			Arrays.asList(

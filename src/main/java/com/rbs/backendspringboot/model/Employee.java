@@ -11,6 +11,10 @@ public class Employee {
 	
 	
 	
+	public Employee() {
+		super();
+	}
+
 	public Employee(int id, String firstname, String lastname, String address, String phone) {
 		super();
 		this.id = id;
@@ -19,8 +23,14 @@ public class Employee {
 		this.address = address;
 		this.phone = phone;
 	}
+	
+	public Employee(String firstname, String lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(int id) {
 		this.id = id;
