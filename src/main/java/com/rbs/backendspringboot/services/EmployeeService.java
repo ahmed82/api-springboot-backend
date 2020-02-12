@@ -1,6 +1,7 @@
 package com.rbs.backendspringboot.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,14 @@ public class EmployeeService {
 		// return this.employees;
 		return (List<Employee>) employeeRepository.findAll();
 		}
+
+
+	public Optional<Employee> getEmployeeById(int id) {
+
+		return employeeRepository.findById(id);
+		
+		
+	}
 		
 
 }
