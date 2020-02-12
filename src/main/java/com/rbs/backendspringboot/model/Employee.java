@@ -1,10 +1,17 @@
 package com.rbs.backendspringboot.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Employee {
-
+	@Id
 	private int id;
+	
+	@Column(name="f_name")
 	private String firstname;
+	
 	private String lastname;
 	private String address;
 	private String phone;
