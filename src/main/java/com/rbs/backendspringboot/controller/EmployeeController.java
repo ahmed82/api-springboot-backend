@@ -18,15 +18,17 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeservice;
 
-	@GetMapping("/employees")
-	public List<Employee> getAllEmployee() {
-		return employeeservice.getAllEmployees();
-	}
-
 	@GetMapping("/hello")
 	public String hello() {
 		return "Hello web team";
 	}
+	
+	
+	@GetMapping("/employees")
+	public List<Employee> getAllEmployee() {
+		return employeeservice.getAllEmployees();
+	}
+	
 
 	@GetMapping("/employees/{id}")
 	public Optional<Employee> getEmployeeById(@PathVariable int id) {
