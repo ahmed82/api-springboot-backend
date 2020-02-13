@@ -34,11 +34,16 @@ public class EmployeeService {
 		}
 
 
-	public Optional<Employee> getEmployeeById(int id) {
+	public Employee getEmployeeById(int id) {
+		  Employee e = employeeRepository.findById(id).orElse(null);
+		return e;
+		
+		
+	}
 
-		return employeeRepository.findById(id);
-		
-		
+
+	public Employee addemployee(Employee emp ) {
+		return employeeRepository.save(emp);
 	}
 		
 
