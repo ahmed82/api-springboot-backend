@@ -1,20 +1,20 @@
 package com.rbs.backendspringboot.controller;
 
 import java.util.List;
-import java.util.Optional;
-
-import javax.xml.ws.spi.http.HttpHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -61,6 +61,7 @@ public class EmployeeController {
 	
 
 	@PostMapping("/employees")
+
 	public ResponseEntity<Boolean> AddEmployee(@RequestBody Employee emp){
 		employeeservice.addemployee(emp);
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -71,7 +72,21 @@ public class EmployeeController {
 						.buildAndExpand(emp.getId()).toUri()
 						.toString());
 		
-		return new ResponseEntity <Boolean>(true,httpHeaders,HttpStatus.CREATED);
-	}
 
+		return new ResponseEntity <Boolean>(true,httpHeaders,HttpStatus.CREATED);
+
+	}
+	
+
+	@PatchMapping("/employees/{id}")
+	public Employee updateEmployee(@RequestBody Employee emp, @PathVariable int id) {
+		emp.setId(id);
+		return employeeservice.upsertEmployee(emp);
+	}	
+
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@DeleteMapping("/employees")
+	public @ResponseBody void deleteEmployees(@RequestBody List<Employee> emps) {
+		employeeservice.deleteEmployee(emps);
+	}
 }

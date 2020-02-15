@@ -2,11 +2,14 @@ package com.rbs.backendspringboot.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Employee {
-	@Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="f_name")
@@ -22,9 +25,8 @@ public class Employee {
 		super();
 	}
 
-	public Employee(int id, String firstname, String lastname, String address, String phone) {
+	public Employee(String firstname, String lastname, String address, String phone) {
 		super();
-		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.address = address;
