@@ -61,7 +61,7 @@ public class EmployeeController {
 	
 
 	@PostMapping("/employees")
-	public ResponseEntity<Employee> AddEmployee(@RequestBody Employee emp){
+	public ResponseEntity<Boolean> AddEmployee(@RequestBody Employee emp){
 		employeeservice.addemployee(emp);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.add(
@@ -71,7 +71,7 @@ public class EmployeeController {
 						.buildAndExpand(emp.getId()).toUri()
 						.toString());
 		
-		return new ResponseEntity <Employee>(emp,httpHeaders,HttpStatus.CREATED);
+		return new ResponseEntity <Boolean>(true,httpHeaders,HttpStatus.CREATED);
 	}
 
 }
