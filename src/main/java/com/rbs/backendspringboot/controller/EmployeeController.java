@@ -62,8 +62,9 @@ public class EmployeeController {
 	
 
 	@PostMapping("/employees")
-	public ResponseEntity<Boolean> saveEmployee(@RequestBody Employee emp){
-		employeeService.addEmployee(emp);
+	public ResponseEntity<Boolean> AddEmployee(@RequestBody Employee emp){
+		employeeservice.addemployee(emp);
+
 		HttpHeaders httpHeaders = new HttpHeaders();
 		/* Http Headers return the new created Employee API url by build the link
 		 *  on fly and send it back in the header respond to fetch that particular Employee
@@ -91,5 +92,6 @@ public class EmployeeController {
 	@DeleteMapping("/employees")
 	public @ResponseBody void deleteEmployees(@RequestBody List<Employee> emps) {
 		employeeService.deleteEmployee(emps);
+
 	}
 }
