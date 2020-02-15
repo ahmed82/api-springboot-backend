@@ -37,6 +37,11 @@ public class EmployeeService {
 		return e;
 
 	}
+	
+	public void addEmployee(Employee emp) {
+		employeeRepository.save(emp);
+	}
+
 
 	public Employee upsertEmployee(Employee emp) {
 		return employeeRepository.save(emp);

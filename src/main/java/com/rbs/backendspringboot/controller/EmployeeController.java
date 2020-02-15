@@ -25,7 +25,7 @@ import com.rbs.backendspringboot.services.EmployeeService;
 public class EmployeeController {
 
 	@Autowired
-	private EmployeeService employeeservice;
+	private EmployeeService employeeService;
 
 	@GetMapping("/hello")
 	public String hello() {
@@ -35,19 +35,19 @@ public class EmployeeController {
 	
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployee() {
-		return employeeservice.getAllEmployees();
+		return employeeService.getAllEmployees();
 	}
 	
 
 	@GetMapping("/employees/{id}")
 	public Employee getEmployeeById(@PathVariable int id) {
-		return employeeservice.getEmployeeById(id);
+		return employeeService.getEmployeeById(id);
 	}
 
 	@GetMapping(value="/employees/" )
 	public ResponseEntity<Employee> getEmployeeById2(@RequestParam("id") int id) {
 		
-		Employee e = employeeservice.getEmployeeById(id);
+		Employee e = employeeService.getEmployeeById(id);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.add("Ahmed-key", "RBS-Value-1");
 		httpHeaders.add("Sean-key", "RBS-Value-2");
@@ -62,10 +62,13 @@ public class EmployeeController {
 	
 
 	@PostMapping("/employees")
-
 	public ResponseEntity<Boolean> AddEmployee(@RequestBody Employee emp){
 		employeeservice.addemployee(emp);
+
 		HttpHeaders httpHeaders = new HttpHeaders();
+		/* Http Headers return the new created Employee API url by build the link
+		 *  on fly and send it back in the header respond to fetch that particular Employee
+		 *  Best practice rather than return the created Employee   */
 		httpHeaders.add(
 						"location",
 						ServletUriComponentsBuilder.fromCurrentRequest()
@@ -82,12 +85,13 @@ public class EmployeeController {
 	@PatchMapping("/employees/{id}")
 	public Employee updateEmployee(@RequestBody Employee emp, @PathVariable int id) {
 		emp.setId(id);
-		return employeeservice.upsertEmployee(emp);
+		return employeeService.upsertEmployee(emp);
 	}	
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/employees")
 	public @ResponseBody void deleteEmployees(@RequestBody List<Employee> emps) {
-		employeeservice.deleteEmployee(emps);
+		employeeService.deleteEmployee(emps);
+
 	}
 }
