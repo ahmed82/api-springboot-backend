@@ -55,7 +55,8 @@ public class EmployeeController {
 		if (e != null ){
 			return new ResponseEntity<Employee>(e,httpHeaders, HttpStatus.OK);
 		}else
-		return new ResponseEntity("Not found", httpHeaders, HttpStatus.NOT_FOUND);
+		//return new ResponseEntity("Not found", httpHeaders, HttpStatus.NOT_FOUND);
+			throw new NullPointerException("Employee Not found for the given id: "+id);
 		
 	}
 	
