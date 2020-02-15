@@ -8,13 +8,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalExceptionHundelerMethod {
 	
 	@ExceptionHandler(NullPointerException.class)
-	public ModelAndView handleException(NullPointerException ex)
+	public ModelAndView handleNullException(NullPointerException ex)
 	{
 	    //Do something additional if required
 	    ModelAndView modelAndView = new ModelAndView();
 	    modelAndView.setViewName("error");
 	    modelAndView.addObject("message", ex.getMessage());
 	    return modelAndView;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public String handleException(Exception ex)
+	{
+		String msg ="Unknown Exception: "+ex.getMessage();
+	   System.out.println(msg);
+	    return msg;
 	}
 
 }
