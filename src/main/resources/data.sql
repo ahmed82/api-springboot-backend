@@ -1,6 +1,9 @@
-insert into employee  values  ('1', 'Sean' , 'aaaaa', 'NY','1234567');
-insert into employee  values  ('2', 'Gery' , 'adddddaaaa', 'NY','1234567');
-insert into employee  values  ('3', 'Mae' , 'sssss', 'NY','1234567');
-insert into employee  values  ('4', 'Brian' , 'asdasdasdq', 'NY','1234567');
-insert into employee  values  ('5', 'Aaron' , 'zzzzeqweqwe', 'NY','1234567');
-insert into employee  values  ('6', 'Ahmed' , 'gngng ', 'NY','1234567');
+/*
+							   address, firstname, lastname, phone
+*/
+insert into employee (address, f_name, lastname, phone) values  ('NC', 'Sean' , 'Fallmann', '1234567');
+insert into employee (address, f_name, lastname, phone) values  ('PA', 'Ahmed', 'Al-Salih','1234567');
+insert into employee (address, f_name, lastname, phone) values  ('NC', 'Jerry', 'Durham','1234567');
+insert into employee (address, f_name, lastname, phone) values  ('NC', 'Mae', 'Forbes','1234567');
+insert into employee (address, f_name, lastname, phone) values  ('NC', 'Aaron', 'Broome','1234567');
+insert into employee (address, f_name, lastname, phone) values  ('NC', 'Brian ', 'Lindner','1234567');
