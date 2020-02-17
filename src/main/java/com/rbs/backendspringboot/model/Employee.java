@@ -6,8 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="Employee")
 public class Employee {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -33,10 +34,6 @@ public class Employee {
 		this.phone = phone;
 	}
 	
-	public Employee(String firstname, String lastname) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
 
 	public int getId() {
 		return this.id;

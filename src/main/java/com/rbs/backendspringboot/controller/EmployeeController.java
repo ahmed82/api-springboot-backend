@@ -63,7 +63,7 @@ public class EmployeeController {
 
 	@PostMapping("/employees")
 	public ResponseEntity<Boolean> AddEmployee(@RequestBody Employee emp){
-		employeeservice.addemployee(emp);
+		employeeService.upsertEmployee(emp);
 
 		HttpHeaders httpHeaders = new HttpHeaders();
 		/* Http Headers return the new created Employee API url by build the link
