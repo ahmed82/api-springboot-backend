@@ -45,5 +45,17 @@ public class GlobalExceptionHundelerMethod {
 
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	
+	@ExceptionHandler(EmployeeNotFoundException.class)
+	public ResponseEntity<Object> handleEmployeeNotFoundException(EmployeeNotFoundException ex, WebRequest request) {
+		String errorMessageDescription = ex.getLocalizedMessage();
+		if (errorMessageDescription == null)
+			errorMessageDescription = ex.toString();
+
+		ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
+
+		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.NOT_FOUND);
+	}
 
 }
