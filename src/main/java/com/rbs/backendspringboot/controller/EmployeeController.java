@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rbs.backendspringboot.exception.EmployeeNotFoundException;
 import com.rbs.backendspringboot.model.Employee;
 import com.rbs.backendspringboot.services.EmployeeService;
 
@@ -41,7 +42,13 @@ public class EmployeeController {
 
 	@GetMapping("/employees/{id}")
 	public Employee getEmployeeById(@PathVariable int id) {
-		return employeeService.getEmployeeById(id);
+		
+		Employee employee = employeeService.getEmployeeById(id);
+		if (employee == null){
+			throw new EmployeeNotFoundException("Cannot Find Employee with ID: "+id);
+		}
+		
+		return employee;
 	}
 
 	@GetMapping(value="/employees/" )
