@@ -7,3 +7,4 @@ insert into employee (address, f_name, lastname, phone) values  ('NC', 'Jerry', 
 insert into employee (address, f_name, lastname, phone) values  ('NC', 'Mae', 'Forbes','1234567');
 insert into employee (address, f_name, lastname, phone) values  ('NC', 'Aaron', 'Broome','1234567');
 insert into employee (address, f_name, lastname, phone) values  ('NC', 'Brian ', 'Lindner','1234567');
+insert into employee (address, f_name, lastname, phone) values  ('NY', 'Tim ', 'Michael');
