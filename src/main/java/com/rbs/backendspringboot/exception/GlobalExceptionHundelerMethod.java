@@ -27,13 +27,9 @@ public class GlobalExceptionHundelerMethod {
 
 	@ExceptionHandler(IOException.class)
 	public ResponseEntity<Object> handleIOException(IOException ex, WebRequest request) {
-		String errorMessageDescription = ex.getLocalizedMessage();
-		if (errorMessageDescription == null)
-			errorMessageDescription = ex.toString();
-
-		ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
-
-		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		
+		return new ResponseEntity<>(ex, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(Exception.class)
@@ -42,7 +38,13 @@ public class GlobalExceptionHundelerMethod {
 		 * String msg ="Unknown Exception: "+ex.getMessage();
 		 * System.out.println(msg);
 		 */
-		return new ResponseEntity<>(ex, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+		String errorMessageDescription = ex.getLocalizedMessage();
+		if (errorMessageDescription == null)
+			errorMessageDescription = ex.toString();
+
+		ErrorMessage errorMessage = new ErrorMessage(new Date(), errorMessageDescription);
+
+		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }
