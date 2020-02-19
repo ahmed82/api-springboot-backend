@@ -28,7 +28,6 @@ public class GlobalExceptionHundelerMethod {
 	@ExceptionHandler(IOException.class)
 	public ResponseEntity<Object> handleIOException(IOException ex, WebRequest request) {
 		
-		
 		return new ResponseEntity<>(ex, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
