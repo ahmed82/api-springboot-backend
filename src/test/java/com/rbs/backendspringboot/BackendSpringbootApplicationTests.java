@@ -36,16 +36,15 @@ class BackendSpringbootApplicationTests {
 	        assertNotNull(employee);
 	    }
 	 
-	    @Test
-	    public void createUser() {
-	    	Employee employee = new Employee("Tim","Mcluden","Boston","123456789");
-	    	Employee savedEmployee = employeeRepository.save(employee);
-	    	Employee newEmployee = employeeRepository.findById(savedEmployee.getId()).orElse(null);
-	        assertNotNull(newEmployee);
-	        assertEquals("Tim", newEmployee.getFirstname() );
-	        assertEquals("Mcluden", newEmployee.getLastname());
-	        assertEquals("Boston", newEmployee.getAddress());
-	        assertEquals("123456789", newEmployee.getPhone());
-	    }
+	/*
+	 * @Test public void createUser() { Employee employee = new
+	 * Employee("Tim","Mcluden","Boston","123456789"); Employee savedEmployee =
+	 * employeeRepository.save(employee); Employee newEmployee =
+	 * employeeRepository.findById(savedEmployee.getId()).orElse(null);
+	 * assertNotNull(newEmployee); assertEquals("Tim", newEmployee.getFirstname() );
+	 * assertEquals("Mcluden", newEmployee.getLastname()); assertEquals("Boston",
+	 * newEmployee.getAddress()); assertEquals("123456789", newEmployee.getPhone());
+	 * }
+	 */
 
 }

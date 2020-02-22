@@ -20,6 +20,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.rbs.backendspringboot.exception.EmployeeNotFoundException;
 import com.rbs.backendspringboot.model.Employee;
+import com.rbs.backendspringboot.model.EmployeeSelary;
+import com.rbs.backendspringboot.repository.EmployeeRepository;
 import com.rbs.backendspringboot.services.EmployeeService;
 
 @RestController
@@ -80,7 +82,7 @@ public class EmployeeController {
 						"location",
 						ServletUriComponentsBuilder.fromCurrentRequest()
 						.path("/{id}")
-						.buildAndExpand(emp.getId()).toUri()
+						.buildAndExpand(emp.getEmpid()).toUri()
 						.toString());
 		
 
@@ -91,7 +93,7 @@ public class EmployeeController {
 
 	@PatchMapping("/employees/{id}")
 	public Employee updateEmployee(@RequestBody Employee emp, @PathVariable int id) {
-		emp.setId(id);
+		emp.setEmpid(id);
 		return employeeService.upsertEmployee(emp);
 	}	
 
@@ -100,5 +102,21 @@ public class EmployeeController {
 	public @ResponseBody void deleteEmployees(@RequestBody List<Employee> emps) {
 		employeeService.deleteEmployee(emps);
 
+	}
+	
+	@Autowired
+	EmployeeRepository emprepo;
+	
+	
+	
+	@GetMapping(value = "/update/{name}")
+	public List<Employee> updateManyTables(@PathVariable final String name){
+		EmployeeSelary empSelary = new EmployeeSelary();
+		empSelary.setJob_title("Java Developper");
+		empSelary.setSalary(75000);
+		
+		Employee emp = new Employee("omar", "ahmed", "NH", "123456", empSelary);
+		emprepo.save(emp);
+		return (List<Employee>) emprepo.findAll();
 	}
 }

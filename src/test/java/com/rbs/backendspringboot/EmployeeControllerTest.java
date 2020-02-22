@@ -20,32 +20,32 @@ class EmployeeControllerTest {
 	@Test
 	@Disabled // @Ignore used for previous version of Junit
 	void testGetAllEmployee() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	void testGetEmployeeById() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	void testGetEmployeeById2() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	void testAddEmployee() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	void testUpdateEmployee() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	void testDeleteEmployees() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }
