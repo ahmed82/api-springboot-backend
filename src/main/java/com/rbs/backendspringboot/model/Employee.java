@@ -1,17 +1,21 @@
 package com.rbs.backendspringboot.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity(name="Employee")
 public class Employee {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+    @Column(name="empid")
+	private int empid;
 	
 	@Column(name="f_name")
 	private String firstname;
@@ -20,6 +24,10 @@ public class Employee {
 	private String address;
 	private String phone;
 	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "empid", referencedColumnName = "id")
+	private EmployeeSelary employeeSelary;
 	
 	
 	public Employee() {
@@ -34,13 +42,38 @@ public class Employee {
 		this.phone = phone;
 	}
 	
+	
+	
 
-	public int getId() {
-		return this.id;
+	public Employee( String firstname, String lastname, String address, String phone,
+			EmployeeSelary employeeSelary) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.address = address;
+		this.phone = phone;
+		this.employeeSelary = employeeSelary;
 	}
-	public void setId(int id) {
-		this.id = id;
+	
+	
+
+
+	public int getEmpid() {
+		return empid;
 	}
+
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+
+	public EmployeeSelary getEmployeeSelary() {
+		return employeeSelary;
+	}
+
+	public void setEmployeeSelary(EmployeeSelary employeeSelary) {
+		this.employeeSelary = employeeSelary;
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}
