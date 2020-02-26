@@ -14,7 +14,32 @@ public class EmployeeSkills {
 	private int empid;
 	private String skill;
 	
+
 	
+	public EmployeeSkills(int empid, String skill) {
+		super();
+		this.empid = empid;
+		this.skill = skill;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getEmpid() {
+		return empid;
+	}
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
 	
 	
 	@Override
@@ -27,34 +52,6 @@ public class EmployeeSkills {
 									+ skill 
 									+ "}";
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + empid;
-		result = prime * result + id;
-		result = prime * result + ((skill == null) ? 0 : skill.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		EmployeeSkills other = (EmployeeSkills) obj;
-		if (empid != other.empid)
-			return false;
-		if (id != other.id)
-			return false;
-		if (skill == null) {
-			if (other.skill != null)
-				return false;
-		} else if (!skill.equals(other.skill))
-			return false;
-		return true;
-	}
+	
 
 }

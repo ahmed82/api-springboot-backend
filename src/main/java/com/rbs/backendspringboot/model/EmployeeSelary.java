@@ -15,11 +15,19 @@ public class EmployeeSelary {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
-	
 	private int salary;
 	private String job_title;
 	
 	
+	
+	public EmployeeSelary() {
+		super();
+	}
+	public EmployeeSelary(int salary, String job_title) {
+		super();
+		this.salary = salary;
+		this.job_title = job_title;
+	}
 	public int getId() {
 		return id;
 	}

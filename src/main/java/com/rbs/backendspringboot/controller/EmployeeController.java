@@ -1,5 +1,7 @@
 package com.rbs.backendspringboot.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.rbs.backendspringboot.exception.EmployeeNotFoundException;
 import com.rbs.backendspringboot.model.Employee;
 import com.rbs.backendspringboot.model.EmployeeSelary;
+import com.rbs.backendspringboot.model.EmployeeSkills;
 import com.rbs.backendspringboot.repository.EmployeeRepository;
 import com.rbs.backendspringboot.services.EmployeeService;
 
@@ -115,7 +118,12 @@ public class EmployeeController {
 		empSelary.setJob_title("Java Developper");
 		empSelary.setSalary(75000);
 		
-		Employee emp = new Employee("omar", "ahmed", "NH", "123456", empSelary);
+		List<EmployeeSkills> skills = new ArrayList <> (
+					Arrays.asList( new EmployeeSkills(1, "java"),
+								   new EmployeeSkills(1, "NodeJs"),
+								   new EmployeeSkills(1, "SQL")));
+				  
+		Employee emp = new Employee("omar", "ahmed", "NH", "123456", empSelary,skills);
 		emprepo.save(emp);
 		return (List<Employee>) emprepo.findAll();
 	}
