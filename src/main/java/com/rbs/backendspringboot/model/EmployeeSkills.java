@@ -16,6 +16,10 @@ public class EmployeeSkills {
 	
 
 	
+	public EmployeeSkills() {
+		super();
+	}
+
 	public EmployeeSkills(int empid, String skill) {
 		super();
 		this.empid = empid;

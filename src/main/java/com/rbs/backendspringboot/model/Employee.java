@@ -32,7 +32,7 @@ public class Employee {
 	@JoinColumn(name = "empid", referencedColumnName = "id")
 	private EmployeeSelary employeeSelary;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empid", referencedColumnName = "empid")
 	private List<EmployeeSkills> skills;
 	
