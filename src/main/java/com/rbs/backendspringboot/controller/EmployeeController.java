@@ -107,23 +107,27 @@ public class EmployeeController {
 
 	}
 	
+	/****************************************
+	 * That Block for testing the JPA
+	 *  relation annotation from that line
+	 *   to the end of the method
+	 *    TestJPArelation.
+	 ***************************************/
 	@Autowired
 	EmployeeRepository emprepo;
 	
-	
-	
-	@GetMapping(value = "/update/{name}")
-	public List<Employee> updateManyTables(@PathVariable final String name){
+	@GetMapping(value = "/test/{name}")
+	public List<Employee> TestJPArelation(@PathVariable final String name){
 		EmployeeSelary empSelary = new EmployeeSelary();
 		empSelary.setJob_title("Java Developper");
 		empSelary.setSalary(75000);
 		
-		List<EmployeeSkills> skills = new ArrayList <> (
+		List<EmployeeSkills> CustomNameskills = new ArrayList <> (
 					Arrays.asList( new EmployeeSkills(1, "java"),
 								   new EmployeeSkills(1, "NodeJs"),
 								   new EmployeeSkills(1, "SQL")));
 				  
-		Employee emp = new Employee("omar", "ahmed", "NH", "123456", empSelary,skills);
+		Employee emp = new Employee("omar", "ahmed", "NH", "123456", empSelary,CustomNameskills);
 		emprepo.save(emp);
 		return (List<Employee>) emprepo.findAll();
 	}
