@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity(name="Employee")
 public class Employee {
 	
@@ -24,6 +26,7 @@ public class Employee {
 	private String firstname;
 	
 	private String lastname;
+	@Length(max = 1000)
 	private String address;
 	private String phone;
 	
