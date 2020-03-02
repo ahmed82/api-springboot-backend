@@ -37,7 +37,7 @@ public class Employee {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empid", referencedColumnName = "empid")
-	private List<EmployeeSkills> skills;
+	private List<EmployeeSkills> customSkillsName;
 	
 	
 	public Employee() {
@@ -66,22 +66,22 @@ public class Employee {
 	
 
 	public Employee( String firstname, String lastname, String address, String phone,
-			EmployeeSelary employeeSelary, List<EmployeeSkills> skills) {
+			EmployeeSelary employeeSelary, List<EmployeeSkills> skills3) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.address = address;
 		this.phone = phone;
 		this.employeeSelary = employeeSelary;
-		this.skills = skills;
+		this.customSkillsName = skills3;
 	}
 
 	public List<EmployeeSkills> getSkills() {
-		return skills;
+		return customSkillsName;
 	}
 
 	public void setSkills(List<EmployeeSkills> skills) {
-		this.skills = skills;
+		this.customSkillsName = skills;
 	}
 
 	public int getEmpid() {
