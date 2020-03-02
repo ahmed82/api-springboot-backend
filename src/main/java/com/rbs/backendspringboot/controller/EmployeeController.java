@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -57,7 +59,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping(value="/employees/" )
-	public ResponseEntity<Employee> getEmployeeById2(@RequestParam("id") int id) {
+	public ResponseEntity<Employee> getEmployeeById2(@Valid @RequestParam("id") int id) {
 		
 		Employee e = employeeService.getEmployeeById(id);
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -122,12 +124,12 @@ public class EmployeeController {
 		empSelary.setJob_title("Java Developper");
 		empSelary.setSalary(75000);
 		
-		List<EmployeeSkills> CustomNameskills = new ArrayList <> (
+		List<EmployeeSkills> skills = new ArrayList <> (
 					Arrays.asList( new EmployeeSkills(1, "java"),
 								   new EmployeeSkills(1, "NodeJs"),
 								   new EmployeeSkills(1, "SQL")));
 				  
-		Employee emp = new Employee("omar", "ahmed", "NH", "123456", empSelary,CustomNameskills);
+		Employee emp = new Employee("omar", "ahmed", "NH", "123456", empSelary,skills);
 		emprepo.save(emp);
 		return (List<Employee>) emprepo.findAll();
 	}
