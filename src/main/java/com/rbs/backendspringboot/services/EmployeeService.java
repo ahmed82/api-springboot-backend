@@ -47,6 +47,10 @@ public class EmployeeService {
 		Stream.of(arrayOfEmps);
 		
 		
+		 List<Employee> empList = Arrays.asList(arrayOfEmps);
+		empList.stream();
+		
+		
 		// return this.employees;
 		return (List<Employee>) employeeRepository.findAll();
 	}
