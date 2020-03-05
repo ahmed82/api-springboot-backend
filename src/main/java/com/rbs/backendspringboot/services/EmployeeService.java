@@ -1,6 +1,8 @@
 package com.rbs.backendspringboot.services;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +19,15 @@ public class EmployeeService {
 	
 	@Autowired
 	EmployeeRepository employeeRepository;
-
+	
+	private static Employee[] arrayOfEmps = {
+			new Employee("Ahmed","ALSALIH","Mooresvile","123456789"), 
+		    new Employee("Sean","Fallmann","somwhere","123456789"), 
+		    new Employee("Aaron","Broom","Concord","123456789")
+		};
+	
+	
+	
 	// Employee emp2 = new Employee("Chuck","Bruson");
 
 	/*
@@ -32,6 +42,11 @@ public class EmployeeService {
 	 */
 
 	public List<Employee> getAllEmployees() {
+		
+
+		Stream.of(arrayOfEmps);
+		
+		
 		// return this.employees;
 		return (List<Employee>) employeeRepository.findAll();
 	}
